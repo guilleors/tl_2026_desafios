@@ -1,0 +1,11 @@
+% Juego Torres de Hanoi
+% Programa en el que se tiene que mover todos los aros hacia el tercer poste, 
+% usando el segundo como un poste auxiliar. 
+% Para calcular los movimientos es mov=(2^n )-1, donde n es el # de aros
+
+hanoi(1, Desde, _, Hacia) :- write('Mover de '), write(Desde), write(' hacia '), write(Hacia), nl.
+
+hanoi(N, Desde, Aux, Hacia) :- 
+    N > 1, 
+    K is N - 1, 
+    hanoi(K, Desde, Hacia, Aux), hanoi(1, Desde, Aux, Hacia), hanoi(K, Aux, Desde, Hacia).
